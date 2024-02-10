@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body style="background-color: rgb(255, 255, 255);">
+    <div id="tes" style="font-size: 60px ; text-align:center ; font-family:sans-serif ; border:solid 4px black ; margin-bottom:15px;padding:20px; ">
+        X<span style="color: red;">O</span> Game (2 players)
+    </div>
+    <div id="table" style="width:450px;margin: auto; border: solid 2px black ;">
+        <div class="h1" style="width:450px ; display:flex ;">
+            <div class="c" id="case00" onclick="afficher(0,0)" style="border: solid 2px black ;width: 150px ; height: 150px;  "> </div>
+            <div class="c" id="case01" onclick="afficher(0,1)" style="border: solid 2px black ;width: 150px ; height: 150px;  "> </div>
+            <div class="c" id="case02" onclick="afficher(0,2)" style="border: solid 2px black ;width: 150px ; height: 150px;  "> </div>
+        </div>
+        <div class="h2" style="width:450px ;  display:flex ;">
+            <div class="c" id="case10" onclick="afficher(1,0)" style="border: solid 2px black ;width: 150px ; height: 150px;  "> </div>
+            <div class="c" id="case11" onclick="afficher(1,1)" style="border: solid 2px black ;width: 150px ; height: 150px;  "> </div>
+            <div class="c" id="case12" onclick="afficher(1,2)" style="border: solid 2px black ;width: 150px ; height: 150px;  "> </div>
+        </div>
+        <div class="h3" style="width:450px ; display:flex ;">
+            <div class="c" id="case20" onclick="afficher(2,0)" style="border: solid 2px black ;width: 150px ; height: 150px;  "> </div>
+            <div class="c" id="case21" onclick="afficher(2,1)" style="border: solid 2px black ;width: 150px ; height: 150px;  "> </div>
+            <div class="c" id="case22" onclick="afficher(2,2)" style="border: solid 2px black ;width: 150px ; height: 150px;  "> </div>
+        </div>
+    </div>
+    <div id="afterwin" style="display: none;"></div>
+    <a href="XOindex.html" style="display:block; border: solid 2px black ; background: #00FA9A ; text-decoration: none; width:250px;text-align:center;margin:auto; margin-top:15px; padding:20px;font-size:40px ;border-radius: 20px;">Play again</a>
+    <script>
+        let t=0
+        let tab=[[0,1,2],[3,4,5],[6,7,8]]
+        let win = false
+        let p=0;
+    function afficher(i,j){
+        if(tab[i][j]!="X" && tab[i][j]!="O" && win==false){
+            win=true
+            let id="case"+i+j
+            let carre=document.getElementById(id);
+            t%2==0 ? tab[i][j]="X":tab[i][j]="O";
+            carre.innerHTML=tab[i][j];
+            carre.style.fontSize="110px"
+            tab[i][j]=="X" ? carre.style.color="black":carre.style.color="red"
+            carre.style.fontFamily="Sans-Serif"
+            carre.style.display="flex"
+            carre.style.justifyContent="center"
+            carre.style.alignItems="center"
+            p=tab[i][j]
+            t+=1 
+            //method 1
+            switch (true) {
+                case (tab[0][0]==tab[1][1] && tab[1][1]==tab[2][2]):
+                    let case00=document.getElementById("case00");
+                    case00.style.background="#00FA9A"
+                    let case11=document.getElementById("case11");
+                    case11.style.background="#00FA9A"
+                    let case22=document.getElementById("case22");
+                    case22.style.background="#00FA9A"
+                    //alert("Player " + tab[1][1] + " won")
+                        
+                    break;
+                case (tab[2][0]==tab[1][1] && tab[1][1]==tab[0][2]):
+                    let case20=document.getElementById("case20");
+                    case20.style.background="#00FA9A"
+                    let case112=document.getElementById("case11");
+                    case112.style.background="#00FA9A"
+                    let case02=document.getElementById("case02");
+                    case02.style.background="#00FA9A"
+                    break;
+                case (tab[0][0]==tab[0][1] && tab[0][1]==tab[0][2]):
+                    let case001=document.getElementById("case00");
+                    case001.style.background="#00FA9A"
+                    let case01=document.getElementById("case01");
+                    case01.style.background="#00FA9A"
+                    let case021=document.getElementById("case02");
+                    case021.style.background="#00FA9A"
+                    break;
+                case (tab[1][0]==tab[1][1] && tab[1][1]==tab[1][2]):
+                    let case10=document.getElementById("case10");
+                    case10.style.background="#00FA9A"
+                    let case113=document.getElementById("case11");
+                    case113.style.background="#00FA9A"
+                    let case12=document.getElementById("case12");
+                    case12.style.background="#00FA9A"
+                    break;
+                case (tab[2][0]==tab[2][1] && tab[2][1]==tab[2][2]):
+                    let case201=document.getElementById("case20");
+                    case201.style.background="#00FA9A"
+                    let case21=document.getElementById("case21");
+                    case21.style.background="#00FA9A"
+                    let case221=document.getElementById("case22");
+                    case221.style.background="#00FA9A"
+                    break;
+                case (tab[0][0]==tab[1][0] && tab[1][0]==tab[2][0]):
+                    let case002=document.getElementById("case00");
+                    case002.style.background="#00FA9A"
+                    let case101=document.getElementById("case10");
+                    case101.style.background="#00FA9A"
+                    let case202=document.getElementById("case20");
+                    case202.style.background="#00FA9A"
+                    break;
+                case (tab[0][1]==tab[1][1] && tab[1][1]==tab[2][1]):
+                    let case011=document.getElementById("case01");
+                    case011.style.background="#00FA9A"
+                    let case111=document.getElementById("case11");
+                    case111.style.background="#00FA9A"
+                    let case211=document.getElementById("case21");
+                    case211.style.background="#00FA9A"
+                    break;
+                case (tab[0][2]==tab[1][2] && tab[1][2]==tab[2][2]):
+                    let case022=document.getElementById("case02");
+                    case022.style.background="#00FA9A"
+                    let case121=document.getElementById("case12");
+                    case121.style.background="#00FA9A"
+                    let case222=document.getElementById("case22");
+                    case222.style.background="#00FA9A"
+                    break;
+                default:
+                    win=false;
+            }
+            //methode 2(delet variable win)
+            /*
+            if((tab[0][0]==tab[1][1] && tab[1][1]==tab[2][2])||(tab[2][0]==tab[1][1] && tab[1][1]==tab[0][2])){
+                alert(tab[i][j] + " won")
+            }
+            for(let x=0;x<3;x++){
+                if((tab[x][0]==tab[x][1] && tab[x][1]==tab[x][2])||(tab[0][x]==tab[0][x] && tab[1][x]==tab[2][x]) ){
+                    alert(tab[i][j] + " woon")
+                }
+            }
+            */
+        }else if(win==true){   
+            let tabl=document.getElementById("table")
+            tabl.style.display="none"
+            let playe = document.getElementById("afterwin")
+            playe.style.display="block"
+            playe.style.width="320px"
+            playe.style.margin="auto"
+            playe.style.padding="55px"
+            playe.style.textAlign="center"
+            playe.style.color="#00FF7F"
+            playe.style.border="solid 4px black"
+            playe.innerText = "Player \n" + p + "\nWon";
+            playe.style.fontSize="100px"
+        }
+    }
+    </script>
+</body>
+</html>

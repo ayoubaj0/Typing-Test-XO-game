@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/style.css">
+    
+</head>
+<body>
+    <header>Typing Test</header>
+    
+    <div id="allresultat">
+        <div  class="resultat"> <span id="time">60</span>seconds </div>
+        <div  class="resultat"> <span id="words">0</span>words </div>
+        <div  class="resultat"> <span id="chars">0</span>chars </div>
+        <div  class="resultat"> <span id="mistakes">0</span>mistakes</div>
+    </div>  
+    <div id="text" ></div>
+    <input type="text" onclick="start()" name="" id="typing" placeholder="Start typing" >
+    <div class="playagain" id="playagain"> Play Again</div>
+    <div id="finalresultat">
+        Typing test complete! <br>
+        Your results :
+        <div  class="resultat"> <span id="wordsmin">0</span>words/min </div>
+        <div  class="resultat"> <span id="charsmin">0</span>chars/min </div>
+        <div  class="resultat"> <span id="accuracy">0</span>%accuracy</div>
+    </div>
+    <script src="javascript/javascript.js"></script>
+    
+        
+    <a href="XO/XOindex.html">XO Game (2 players)</a>
+    
+</body>
+</html>
